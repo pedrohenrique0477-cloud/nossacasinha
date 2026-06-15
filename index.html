@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Enxoval da Nossa Casinha</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="pagina">
+
+    <header class="topo">
+      <div>
+        <h1>enxoval da<br>nossa casinha</h1>
+      </div>
+
+      <div class="foto-casal">
+        <canvas id="fotoCasalCanvas"></canvas>
+      </div>
+    </header>
+
+    <section class="grid-listas">
+
+      <div class="bloco">
+        <h2>QUARTO</h2>
+        <ul>
+          <li><label><input type="checkbox"><span contenteditable="true">Cama</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Colchão</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Cabeceira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Guarda-roupa</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Cômoda</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Mesa de cabeceira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Lençol</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Edredom</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Cobertor e manta</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Travesseiro</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Cabide</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Abajur</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Cortina</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Sapateira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Espelho</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Jogo de tapetes</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Almofadas</span></label></li>
+        </ul>
+      </div>
+
+      <div class="bloco">
+        <h2>COZINHA</h2>
+        <ul>
+          <li><label><input type="checkbox"><span contenteditable="true">Armário</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Fogão</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Mesa</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Micro-ondas</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Air fryer</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Geladeira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Sanduicheira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Liquidificador</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Batedeira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Cafeteira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Chaleira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Jogo de panelas</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Jogo de tapetes</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Kit de pia</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Lixeira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Fruteira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Formas e assadeiras</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Potes</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Travessas</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Saladeira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Faqueiro 36 peças</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Toalha de mesa</span></label></li>
+        </ul>
+      </div>
+
+      <div class="bloco">
+        <h2>SALA</h2>
+        <ul>
+          <li><label><input type="checkbox"><span contenteditable="true">Sofá</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Tapete</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Painel ou Estante</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">TV</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Cortina</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Prateleira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Porta Retrato</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Poltrona</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Puff</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Almofadas</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Planta</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Ventilador</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Mesa de jantar</span></label></li>
+        </ul>
+      </div>
+
+      <div class="bloco">
+        <h2>BANHEIRO</h2>
+        <ul>
+          <li><label><input type="checkbox"><span contenteditable="true">Ducha e chuveiro</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Toalha</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Roupão</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Espelho</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Porta Escova</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Porta Shampoo</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Tapete</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Lixeira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Saboneteira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Chapinha</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Secador</span></label></li>
+        </ul>
+      </div>
+
+      <div class="bloco">
+        <h2>LAVANDERIA</h2>
+        <ul>
+          <li><label><input type="checkbox"><span contenteditable="true">Aspirador de pó</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Máquina de lavar roupa</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Tábua de passar roupa</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Ferro de passar roupa</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Vassoura</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Varal</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Armário multiuso</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Kit de ferramentas</span></label></li>
+        </ul>
+      </div>
+
+      <div class="bloco">
+        <h2>ESCRITÓRIO</h2>
+        <ul>
+          <li><label><input type="checkbox"><span contenteditable="true">Mesa</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Cadeira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Estante</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Prateleira</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Impressora</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Modem</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Escrivaninha</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Computador</span></label></li>
+        </ul>
+      </div>
+
+      <div class="bloco decoracao">
+        <h2>DECORAÇÃO</h2>
+        <ul>
+          <li><label><input type="checkbox"><span contenteditable="true">Fita de led</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Plantas</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Tapetes</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Abajur</span></label></li>
+          <li><label><input type="checkbox"><span contenteditable="true">Quadros</span></label></li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="botoes">
+      <button id="salvar">Salvar alterações</button>
+      <button id="limpar">Limpar marcações</button>
+      <button id="restaurar">Restaurar original</button>
+    </div>
+
+    <p class="aviso">
+      Clique em qualquer item para editar o texto. Exemplo: trocar “Quadros” por “Relógio”.
+    </p>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
