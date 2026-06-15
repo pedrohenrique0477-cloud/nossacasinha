@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Enxoval da Nossa Casinha</title>
+  <title>Lista de Enxoval</title>
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -12,154 +12,144 @@
 
   <main class="pagina">
 
-    <header class="topo">
-      <div>
-        <h1>enxoval da<br>nossa casinha</h1>
-      </div>
+    <div class="decor decor-top-left">🍂</div>
+    <div class="decor decor-top-right">🌿</div>
+    <div class="decor decor-bottom-left">🍃</div>
+    <div class="decor decor-bottom-right">🌱</div>
 
-      <div class="foto-casal">
-        <canvas id="fotoCasalCanvas"></canvas>
-      </div>
-    </header>
+    <section class="folha">
 
-    <section class="grid-listas">
+      <header class="cabecalho">
+        <h1>Lista de Enxoval</h1>
+        <h2 id="tituloCategoria">Cozinha</h2>
+      </header>
 
-      <div class="bloco">
-        <h2>QUARTO</h2>
-        <ul>
-          <li><label><input type="checkbox"><span contenteditable="true">Cama</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Colchão</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Cabeceira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Guarda-roupa</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Cômoda</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Mesa de cabeceira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Lençol</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Edredom</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Cobertor e manta</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Travesseiro</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Cabide</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Abajur</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Cortina</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Sapateira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Espelho</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Jogo de tapetes</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Almofadas</span></label></li>
-        </ul>
-      </div>
+      <nav class="menu-categorias">
+        <button class="aba ativa" data-categoria="cozinha">Cozinha</button>
+        <button class="aba" data-categoria="quarto">Quarto</button>
+        <button class="aba" data-categoria="banheiro">Banheiro</button>
+        <button class="aba" data-categoria="sala">Sala</button>
+        <button class="aba" data-categoria="servicos">Área de serviços</button>
+      </nav>
 
-      <div class="bloco">
-        <h2>COZINHA</h2>
-        <ul>
-          <li><label><input type="checkbox"><span contenteditable="true">Armário</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Fogão</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Mesa</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Micro-ondas</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Air fryer</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Geladeira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Sanduicheira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Liquidificador</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Batedeira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Cafeteira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Chaleira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Jogo de panelas</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Jogo de tapetes</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Kit de pia</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Lixeira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Fruteira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Formas e assadeiras</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Potes</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Travessas</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Saladeira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Faqueiro 36 peças</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Toalha de mesa</span></label></li>
-        </ul>
-      </div>
+      <section class="lista-area">
 
-      <div class="bloco">
-        <h2>SALA</h2>
-        <ul>
-          <li><label><input type="checkbox"><span contenteditable="true">Sofá</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Tapete</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Painel ou Estante</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">TV</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Cortina</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Prateleira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Porta Retrato</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Poltrona</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Puff</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Almofadas</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Planta</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Ventilador</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Mesa de jantar</span></label></li>
-        </ul>
-      </div>
+        <div class="lista ativa" id="cozinha">
+          <div class="item"><input type="checkbox"><span contenteditable="true">Geladeira</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Fogão</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Armário</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Micro-ondas</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Forno</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Mesa</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Jogo de panelas</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Liquidificador</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Panela de pressão</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Porta temperos</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Escorredor</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Peneira</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Jogo de talheres</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Jogo de copos</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Pratos</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Panos de prato</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Potes herméticos</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Kit de utensílios</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Air fryer</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Batedeira</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Tábua de cortar</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Xícaras</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Lixeira</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Kit de facas</span></div>
+        </div>
 
-      <div class="bloco">
-        <h2>BANHEIRO</h2>
-        <ul>
-          <li><label><input type="checkbox"><span contenteditable="true">Ducha e chuveiro</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Toalha</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Roupão</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Espelho</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Porta Escova</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Porta Shampoo</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Tapete</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Lixeira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Saboneteira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Chapinha</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Secador</span></label></li>
-        </ul>
-      </div>
+        <div class="lista" id="quarto">
+          <div class="item"><input type="checkbox"><span contenteditable="true">Jogos de cama</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Cobre leitos</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Cortina</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Cama</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Guarda roupa</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Cabeceira</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Mesa de cabeceira</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Toalha de banho</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Toalha de rosto</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Cobertores</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Travesseiros</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Enchimento de almofada</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Capa de almofada</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Tapete</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Decoração</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true"></span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true"></span></div>
+        </div>
 
-      <div class="bloco">
-        <h2>LAVANDERIA</h2>
-        <ul>
-          <li><label><input type="checkbox"><span contenteditable="true">Aspirador de pó</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Máquina de lavar roupa</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Tábua de passar roupa</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Ferro de passar roupa</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Vassoura</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Varal</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Armário multiuso</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Kit de ferramentas</span></label></li>
-        </ul>
-      </div>
+        <div class="lista" id="banheiro">
+          <div class="item"><input type="checkbox"><span contenteditable="true">Jogo de banheiro</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Escova sanitária</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Lixeira</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Tapetes de banheiro</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Chuveiro</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Suporte de banheiro</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Porta sabonete</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Porta escova de dentes</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Toalhas</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Espelho</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true"></span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true"></span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true"></span></div>
+        </div>
 
-      <div class="bloco">
-        <h2>ESCRITÓRIO</h2>
-        <ul>
-          <li><label><input type="checkbox"><span contenteditable="true">Mesa</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Cadeira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Estante</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Prateleira</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Impressora</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Modem</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Escrivaninha</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Computador</span></label></li>
-        </ul>
-      </div>
+        <div class="lista" id="sala">
+          <div class="item"><input type="checkbox"><span contenteditable="true">Sofá</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">TV</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Painel de TV</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Tapete</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Decoração</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Quadros</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Enchimento de almofada</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Capa de almofada</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Manta de sofá</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Mesa de centro</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Cortina</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true"></span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true"></span></div>
+        </div>
 
-      <div class="bloco decoracao">
-        <h2>DECORAÇÃO</h2>
-        <ul>
-          <li><label><input type="checkbox"><span contenteditable="true">Fita de led</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Plantas</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Tapetes</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Abajur</span></label></li>
-          <li><label><input type="checkbox"><span contenteditable="true">Quadros</span></label></li>
-        </ul>
-      </div>
+        <div class="lista" id="servicos">
+          <div class="item"><input type="checkbox"><span contenteditable="true">Máquina de lavar</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Aspirador de pó</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Prendedor de roupa</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Porta prendedor de roupas</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Varal de roupas íntimas</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Vassoura</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Pá de lixo</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Rodo</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Balde</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Ferro de passar</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Mop</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Pano de chão</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true">Tapete</span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true"></span></div>
+          <div class="item"><input type="checkbox"><span contenteditable="true"></span></div>
+        </div>
+
+      </section>
+
+      <footer class="rodape">
+        <div class="assinatura">
+          <canvas id="fotoCasalCanvas"></canvas>
+          <p>Pedro & Maju</p>
+        </div>
+      </footer>
 
     </section>
 
     <div class="botoes">
-      <button id="salvar">Salvar alterações</button>
-      <button id="limpar">Limpar marcações</button>
-      <button id="restaurar">Restaurar original</button>
+      <button id="salvar">Salvar</button>
+      <button id="limpar">Limpar check</button>
+      <button id="restaurar">Restaurar</button>
     </div>
 
     <p class="aviso">
-      Clique em qualquer item para editar o texto. Exemplo: trocar “Quadros” por “Relógio”.
+      Toque no texto para editar. As alterações ficam salvas no seu celular.
     </p>
 
   </main>
