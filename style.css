@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Quicksand:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&display=swap');
 
 * {
   box-sizing: border-box;
@@ -6,240 +6,380 @@
 
 body {
   margin: 0;
-  background: #f5f1eb;
-  color: #34495a;
-  font-family: 'Quicksand', Arial, sans-serif;
+  background: #efe8dc;
+  color: #111;
+  font-family: 'Playfair Display', Georgia, serif;
 }
 
 .pagina {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 45px 55px 30px;
+  width: 100%;
   min-height: 100vh;
+  padding: 10px;
+  position: relative;
+  overflow-x: hidden;
 }
 
-.topo {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 25px;
-  margin-bottom: 55px;
-}
-
-h1 {
-  margin: 0;
-  font-family: 'Handlee', cursive;
-  font-size: 76px;
-  line-height: 0.95;
-  font-weight: 400;
-  color: #3d4f61;
-}
-
-.foto-casal {
-  width: 135px;
-  height: 135px;
-  border: 1px solid #3d4f61;
-  border-radius: 50%;
+.folha {
+  width: 100%;
+  max-width: 520px;
+  min-height: 760px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1.5px solid #222;
+  position: relative;
+  padding: 34px 24px 22px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
   overflow: hidden;
-  background: transparent;
+}
+
+.folha::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid #333;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cabecalho {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  padding: 0 10px 15px;
+  border-bottom: 1.5px solid #222;
+  margin-bottom: 12px;
+}
+
+.cabecalho h1 {
+  margin: 0;
+  font-family: 'Great Vibes', cursive;
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.cabecalho h2 {
+  margin: 4px 0 0;
+  font-family: 'Great Vibes', cursive;
+  font-size: 39px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.menu-categorias {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  padding: 4px 0 12px;
+  margin-bottom: 3px;
+  scrollbar-width: none;
+}
+
+.menu-categorias::-webkit-scrollbar {
+  display: none;
+}
+
+.aba {
+  flex: 0 0 auto;
+  border: 1px solid #444;
+  background: #fff;
+  color: #222;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+}
+
+.aba.ativa {
+  background: #8c9b78;
+  color: #fff;
+  border-color: #8c9b78;
+}
+
+.lista-area {
+  position: relative;
+  z-index: 2;
+  padding: 2px 8px 0;
+}
+
+.lista {
+  display: none;
+}
+
+.lista.ativa {
+  display: block;
+}
+
+.item {
   display: flex;
   align-items: center;
+  gap: 9px;
+  min-height: 37px;
+  position: relative;
+}
+
+.item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border: 1.5px solid #222;
+  background: #fff;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.item input[type="checkbox"]:checked {
+  background: rgba(130, 151, 110, 0.35);
+}
+
+.item input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  left: 3px;
+  top: -8px;
+  font-size: 30px;
+  font-family: Arial, sans-serif;
+  color: #3d5a35;
+  font-weight: bold;
+}
+
+.item span {
+  flex: 1;
+  min-height: 28px;
+  border-bottom: 1.4px solid #222;
+  font-size: 22px;
+  line-height: 29px;
+  padding-left: 2px;
+  outline: none;
+  word-break: break-word;
+}
+
+.item span:focus {
+  background: rgba(234, 224, 204, 0.6);
+}
+
+.item input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  opacity: 0.7;
+}
+
+.rodape {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: 18px;
+  padding-bottom: 6px;
+}
+
+.assinatura {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
+  gap: 8px;
 }
 
 #fotoCasalCanvas {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
+  width: 50px;
+  height: 50px;
 }
 
-.grid-listas {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 70px;
-  row-gap: 55px;
-  align-items: start;
-}
-
-.bloco h2 {
-  display: inline-block;
-  margin: 0 0 12px;
-  padding: 4px 12px;
-  background: #3d4f61;
-  color: #ffffff;
-  font-size: 28px;
-  font-weight: 500;
-  line-height: 1;
+.assinatura p {
+  margin: 0;
+  font-size: 18px;
+  font-style: italic;
   letter-spacing: 1px;
 }
 
-.bloco ul {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 8px;
-}
-
-.bloco li {
-  margin: 3px 0;
-  font-size: 15.5px;
-  color: #3d4f61;
-}
-
-.bloco label {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  cursor: pointer;
-}
-
-.bloco input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 14px;
-  height: 14px;
-  min-width: 14px;
-  border: 1.8px solid #3d4f61;
-  border-radius: 50%;
-  cursor: pointer;
-  position: relative;
-  background: transparent;
-}
-
-.bloco input[type="checkbox"]:checked {
-  background: #3d4f61;
-}
-
-.bloco input[type="checkbox"]:checked::after {
-  content: "✓";
+.decor {
   position: absolute;
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: bold;
-  top: -2px;
-  left: 2px;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.50;
+  filter: saturate(0.75);
 }
 
-.bloco span {
-  outline: none;
-  border-radius: 4px;
-  padding: 1px 3px;
+.decor-top-left {
+  top: -18px;
+  left: -4px;
+  font-size: 92px;
+  transform: rotate(-24deg);
 }
 
-.bloco span:focus {
-  background: #ffffff;
-  box-shadow: 0 0 0 1px #3d4f61;
+.decor-top-right {
+  top: -26px;
+  right: -10px;
+  font-size: 98px;
+  transform: rotate(20deg);
 }
 
-.bloco input[type="checkbox"]:checked + span {
-  text-decoration: line-through;
-  opacity: 0.65;
+.decor-bottom-left {
+  bottom: 75px;
+  left: -10px;
+  font-size: 96px;
+  transform: rotate(12deg);
 }
 
-.decoracao {
-  grid-column: 2 / 3;
+.decor-bottom-right {
+  bottom: 35px;
+  right: -6px;
+  font-size: 105px;
+  transform: rotate(-15deg);
 }
 
 .botoes {
+  max-width: 520px;
+  margin: 12px auto 0;
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 8px;
   flex-wrap: wrap;
-  margin-top: 45px;
 }
 
-button {
+.botoes button {
   border: none;
-  background: #3d4f61;
-  color: #ffffff;
-  padding: 10px 18px;
-  border-radius: 6px;
-  font-family: 'Quicksand', Arial, sans-serif;
-  font-size: 15px;
+  background: #8c9b78;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
   cursor: pointer;
-  transition: 0.2s;
 }
 
-button:hover {
-  background: #263747;
-  transform: translateY(-2px);
+.botoes button:hover {
+  background: #6f7f5d;
 }
 
 .aviso {
+  max-width: 520px;
+  margin: 10px auto 0;
   text-align: center;
-  font-size: 14px;
-  margin-top: 18px;
-  color: #5c6b78;
+  font-size: 13px;
+  color: #4e4e4e;
+  font-family: Arial, sans-serif;
 }
 
-@media (max-width: 850px) {
+/* Celular */
+@media (max-width: 480px) {
   .pagina {
-    padding: 30px 25px;
+    padding: 6px;
   }
 
-  .topo {
-    align-items: center;
+  .folha {
+    max-width: 100%;
+    min-height: 720px;
+    padding: 30px 17px 18px;
   }
 
-  h1 {
-    font-size: 52px;
+  .folha::before {
+    inset: 10px;
   }
 
-  .foto-casal {
-    width: 105px;
-    height: 105px;
+  .cabecalho h1 {
+    font-size: 43px;
+  }
+
+  .cabecalho h2 {
+    font-size: 34px;
+  }
+
+  .aba {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .lista-area {
+    padding: 0 3px;
+  }
+
+  .item {
+    min-height: 35px;
+    gap: 8px;
+  }
+
+  .item input[type="checkbox"] {
+    width: 21px;
+    height: 21px;
+    min-width: 21px;
+  }
+
+  .item span {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .decor-top-left {
+    font-size: 72px;
+    top: -14px;
+    left: -16px;
+  }
+
+  .decor-top-right {
+    font-size: 78px;
+    top: -18px;
+    right: -22px;
+  }
+
+  .decor-bottom-left {
+    font-size: 74px;
+    bottom: 90px;
+    left: -20px;
+  }
+
+  .decor-bottom-right {
+    font-size: 82px;
+    bottom: 48px;
+    right: -20px;
   }
 
   #fotoCasalCanvas {
-    width: 95px;
-    height: 95px;
+    width: 44px;
+    height: 44px;
   }
 
-  .grid-listas {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 35px;
-  }
-
-  .decoracao {
-    grid-column: auto;
+  .assinatura p {
+    font-size: 16px;
   }
 }
 
-@media (max-width: 560px) {
-  .topo {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/* Celular bem pequeno */
+@media (max-width: 360px) {
+  .cabecalho h1 {
+    font-size: 38px;
   }
 
-  h1 {
-    font-size: 48px;
+  .cabecalho h2 {
+    font-size: 30px;
   }
 
-  .grid-listas {
-    grid-template-columns: 1fr;
-    row-gap: 35px;
-  }
-
-  .bloco {
-    text-align: left;
-  }
-
-  .bloco h2 {
-    font-size: 24px;
+  .item span {
+    font-size: 18px;
   }
 }
 
 @media print {
+  .menu-categorias,
   .botoes,
   .aviso {
     display: none;
   }
 
   body {
-    background: #f5f1eb;
+    background: #fff;
   }
 
   .pagina {
-    padding: 30px;
+    padding: 0;
+  }
+
+  .folha {
+    box-shadow: none;
+    border: 1px solid #222;
   }
 }
