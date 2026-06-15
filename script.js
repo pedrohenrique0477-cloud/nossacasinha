@@ -1,7 +1,35 @@
-const STORAGE_KEY = "lista-enxoval-pedro-maju-v2";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+  set,
+  get,
+  onValue
+} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAKBpLrINoYOHcsaQ9pHeb00e06K4GGmYk",
+  authDomain: "lista-enxoval-pedro-maju-48d3e.firebaseapp.com",
+  databaseURL: "https://lista-enxoval-pedro-maju-48d3e-default-rtdb.firebaseio.com/",
+  projectId: "lista-enxoval-pedro-maju-48d3e",
+  storageBucket: "lista-enxoval-pedro-maju-48d3e.firebasestorage.app",
+  messagingSenderId: "379961136744",
+  appId: "1:379961136744:web:f07057545b75454cfdcddd"
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const listaRef = ref(database, "listaEnxoval");
+
+let carregandoDados = false;
 
 function carregarImagemSemFundoVerde() {
   const canvas = document.getElementById("fotoCasalCanvas");
+
+  if (!canvas) {
+    return;
+  }
+
   const ctx = canvas.getContext("2d");
 
   const img = new Image();
@@ -52,8 +80,16 @@ function mudarCategoria(categoria) {
     aba.classList.remove("ativa");
   });
 
-  document.getElementById(categoria).classList.add("ativa");
-  document.querySelector(`[data-categoria="${categoria}"]`).classList.add("ativa");
+  const listaEscolhida = document.getElementById(categoria);
+  const abaEscolhida = document.querySelector(`[data-categoria="${categoria}"]`);
+
+  if (listaEscolhida) {
+    listaEscolhida.classList.add("ativa");
+  }
+
+  if (abaEscolhida) {
+    abaEscolhida.classList.add("ativa");
+  }
 
   const nomes = {
     cozinha: "Cozinha",
@@ -63,10 +99,12 @@ function mudarCategoria(categoria) {
     servicos: "Área de serviços"
   };
 
-  titulo.innerText = nomes[categoria];
+  if (titulo) {
+    titulo.innerText = nomes[categoria];
+  }
 }
 
-function salvarDados() {
+function coletarDadosDaTela() {
   const dados = {};
 
   document.querySelectorAll(".lista").forEach((lista) => {
@@ -84,17 +122,15 @@ function salvarDados() {
     });
   });
 
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(dados));
+  return dados;
 }
 
-function carregarDados() {
-  const dadosSalvos = localStorage.getItem(STORAGE_KEY);
-
-  if (!dadosSalvos) {
+function aplicarDadosNaTela(dados) {
+  if (!dados) {
     return;
   }
 
-  const dados = JSON.parse(dadosSalvos);
+  carregandoDados = true;
 
   document.querySelectorAll(".lista").forEach((lista) => {
     const categoria = lista.id;
@@ -107,10 +143,50 @@ function carregarDados() {
 
     itens.forEach((item, index) => {
       if (dados[categoria][index]) {
-        item.querySelector("span").innerText = dados[categoria][index].texto;
-        item.querySelector("input").checked = dados[categoria][index].marcado;
+        const texto = item.querySelector("span");
+        const checkbox = item.querySelector("input");
+
+        texto.innerText = dados[categoria][index].texto;
+        checkbox.checked = dados[categoria][index].marcado;
       }
     });
+  });
+
+  carregandoDados = false;
+}
+
+async function salvarOnline() {
+  const dados = coletarDadosDaTela();
+
+  try {
+    await set(listaRef, dados);
+    mostrarMensagem("Lista salva online!");
+  } catch (erro) {
+    console.error("Erro ao salvar:", erro);
+    alert("Erro ao salvar online. Verifique se o Realtime Database está ativado em modo de teste.");
+  }
+}
+
+async function carregarOnlinePrimeiraVez() {
+  try {
+    const snapshot = await get(listaRef);
+
+    if (snapshot.exists()) {
+      aplicarDadosNaTela(snapshot.val());
+    } else {
+      await salvarOnline();
+    }
+  } catch (erro) {
+    console.error("Erro ao carregar:", erro);
+    alert("Erro ao carregar dados online. Verifique as regras do Firebase.");
+  }
+}
+
+function acompanharMudancasOnline() {
+  onValue(listaRef, (snapshot) => {
+    if (snapshot.exists()) {
+      aplicarDadosNaTela(snapshot.val());
+    }
   });
 }
 
@@ -119,21 +195,137 @@ function limparChecks() {
     checkbox.checked = false;
   });
 
-  salvarDados();
+  salvarOnline();
 }
 
 function restaurarOriginal() {
-  const confirmar = confirm("Deseja restaurar a lista original? As edições serão apagadas.");
+  const confirmar = confirm("Deseja restaurar a lista original? As edições serão apagadas para todos.");
 
   if (confirmar) {
-    localStorage.removeItem(STORAGE_KEY);
-    location.reload();
+    const listasOriginais = criarListaOriginal();
+    set(listaRef, listasOriginais);
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function criarListaOriginal() {
+  return {
+    cozinha: [
+      { texto: "Geladeira", marcado: false },
+      { texto: "Fogão", marcado: false },
+      { texto: "Armário", marcado: false },
+      { texto: "Micro-ondas", marcado: false },
+      { texto: "Forno", marcado: false },
+      { texto: "Mesa", marcado: false },
+      { texto: "Jogo de panelas", marcado: false },
+      { texto: "Liquidificador", marcado: false },
+      { texto: "Panela de pressão", marcado: false },
+      { texto: "Porta temperos", marcado: false },
+      { texto: "Escorredor", marcado: false },
+      { texto: "Peneira", marcado: false },
+      { texto: "Jogo de talheres", marcado: false },
+      { texto: "Jogo de copos", marcado: false },
+      { texto: "Pratos", marcado: false },
+      { texto: "Panos de prato", marcado: false },
+      { texto: "Potes herméticos", marcado: false },
+      { texto: "Kit de utensílios", marcado: false },
+      { texto: "Air fryer", marcado: false },
+      { texto: "Batedeira", marcado: false },
+      { texto: "Tábua de cortar", marcado: false },
+      { texto: "Xícaras", marcado: false },
+      { texto: "Lixeira", marcado: false },
+      { texto: "Kit de facas", marcado: false }
+    ],
+    quarto: [
+      { texto: "Jogos de cama", marcado: false },
+      { texto: "Cobre leitos", marcado: false },
+      { texto: "Cortina", marcado: false },
+      { texto: "Cama", marcado: false },
+      { texto: "Guarda roupa", marcado: false },
+      { texto: "Cabeceira", marcado: false },
+      { texto: "Mesa de cabeceira", marcado: false },
+      { texto: "Toalha de banho", marcado: false },
+      { texto: "Toalha de rosto", marcado: false },
+      { texto: "Cobertores", marcado: false },
+      { texto: "Travesseiros", marcado: false },
+      { texto: "Enchimento de almofada", marcado: false },
+      { texto: "Capa de almofada", marcado: false },
+      { texto: "Tapete", marcado: false },
+      { texto: "Decoração", marcado: false },
+      { texto: "", marcado: false },
+      { texto: "", marcado: false }
+    ],
+    banheiro: [
+      { texto: "Jogo de banheiro", marcado: false },
+      { texto: "Escova sanitária", marcado: false },
+      { texto: "Lixeira", marcado: false },
+      { texto: "Tapetes de banheiro", marcado: false },
+      { texto: "Chuveiro", marcado: false },
+      { texto: "Suporte de banheiro", marcado: false },
+      { texto: "Porta sabonete", marcado: false },
+      { texto: "Porta escova de dentes", marcado: false },
+      { texto: "Toalhas", marcado: false },
+      { texto: "Espelho", marcado: false },
+      { texto: "", marcado: false },
+      { texto: "", marcado: false },
+      { texto: "", marcado: false }
+    ],
+    sala: [
+      { texto: "Sofá", marcado: false },
+      { texto: "TV", marcado: false },
+      { texto: "Painel de TV", marcado: false },
+      { texto: "Tapete", marcado: false },
+      { texto: "Decoração", marcado: false },
+      { texto: "Quadros", marcado: false },
+      { texto: "Enchimento de almofada", marcado: false },
+      { texto: "Capa de almofada", marcado: false },
+      { texto: "Manta de sofá", marcado: false },
+      { texto: "Mesa de centro", marcado: false },
+      { texto: "Cortina", marcado: false },
+      { texto: "", marcado: false },
+      { texto: "", marcado: false }
+    ],
+    servicos: [
+      { texto: "Máquina de lavar", marcado: false },
+      { texto: "Aspirador de pó", marcado: false },
+      { texto: "Prendedor de roupa", marcado: false },
+      { texto: "Porta prendedor de roupas", marcado: false },
+      { texto: "Varal de roupas íntimas", marcado: false },
+      { texto: "Vassoura", marcado: false },
+      { texto: "Pá de lixo", marcado: false },
+      { texto: "Rodo", marcado: false },
+      { texto: "Balde", marcado: false },
+      { texto: "Ferro de passar", marcado: false },
+      { texto: "Mop", marcado: false },
+      { texto: "Pano de chão", marcado: false },
+      { texto: "Tapete", marcado: false },
+      { texto: "", marcado: false },
+      { texto: "", marcado: false }
+    ]
+  };
+}
+
+function mostrarMensagem(texto) {
+  let mensagem = document.querySelector(".mensagem-salvo");
+
+  if (!mensagem) {
+    mensagem = document.createElement("div");
+    mensagem.className = "mensagem-salvo";
+    document.body.appendChild(mensagem);
+  }
+
+  mensagem.innerText = texto;
+  mensagem.classList.add("aparecer");
+
+  setTimeout(() => {
+    mensagem.classList.remove("aparecer");
+  }, 1800);
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
   carregarImagemSemFundoVerde();
-  carregarDados();
+
+  await carregarOnlinePrimeiraVez();
+  acompanharMudancasOnline();
 
   document.querySelectorAll(".aba").forEach((botao) => {
     botao.addEventListener("click", () => {
@@ -142,19 +334,41 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.querySelectorAll("input[type='checkbox']").forEach((checkbox) => {
-    checkbox.addEventListener("change", salvarDados);
+    checkbox.addEventListener("change", () => {
+      if (!carregandoDados) {
+        salvarOnline();
+      }
+    });
   });
 
   document.querySelectorAll("[contenteditable='true']").forEach((campo) => {
-    campo.addEventListener("input", salvarDados);
-    campo.addEventListener("blur", salvarDados);
+    campo.addEventListener("blur", () => {
+      if (!carregandoDados) {
+        salvarOnline();
+      }
+    });
+
+    campo.addEventListener("keydown", (evento) => {
+      if (evento.key === "Enter") {
+        evento.preventDefault();
+        campo.blur();
+      }
+    });
   });
 
-  document.getElementById("salvar").addEventListener("click", () => {
-    salvarDados();
-    alert("Lista salva!");
-  });
+  const botaoSalvar = document.getElementById("salvar");
+  const botaoLimpar = document.getElementById("limpar");
+  const botaoRestaurar = document.getElementById("restaurar");
 
-  document.getElementById("limpar").addEventListener("click", limparChecks);
-  document.getElementById("restaurar").addEventListener("click", restaurarOriginal);
+  if (botaoSalvar) {
+    botaoSalvar.addEventListener("click", salvarOnline);
+  }
+
+  if (botaoLimpar) {
+    botaoLimpar.addEventListener("click", limparChecks);
+  }
+
+  if (botaoRestaurar) {
+    botaoRestaurar.addEventListener("click", restaurarOriginal);
+  }
 });
