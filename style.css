@@ -383,3 +383,25 @@ body {
     border: 1px solid #222;
   }
 }
+
+.mensagem-salvo {
+  position: fixed;
+  left: 50%;
+  bottom: 85px;
+  transform: translateX(-50%) translateY(20px);
+  background: #3d4f61;
+  color: white;
+  padding: 11px 18px;
+  border-radius: 999px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s ease;
+  z-index: 9999;
+}
+
+.mensagem-salvo.aparecer {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
